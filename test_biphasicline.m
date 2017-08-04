@@ -2,13 +2,13 @@
 a = 3; % Slope of left-hand line
 b = -2; % Slope of right-hand line
 x0 = 1; % x point of line intersection
-n = 2;  % Degree of rapidity of change between left and right hand lines. Higher means a more rapid change that looks less smooth
+l = 1/2;  % Length scale of change between left and right hand lines. Smaller means a more rapid change that looks less smooth
 y0 = 2; % y point of line intersection
 
 % Line functions and biphasic functions only as a function of x
 aline = @(x)a.*(x-x0)+y0;
 bline = @(x)b.*(x-x0)+y0;
-testplot = @(x)biphasicline(x,a,b,x0,y0,n);
+testplot = @(x)biphasicline(x,a,b,x0,y0,l);
 
 % Set limits to plot between
 limits = [x0-5 x0+5];

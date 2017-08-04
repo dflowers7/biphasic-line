@@ -1,10 +1,13 @@
-function [val,dval,ddval] = biphasicline(x, a, b, x0, y0, n)
-% Integral wrt x of b/(1+exp(x0-x)^n) + a/(1+exp(x-x0)^n), two slopes multiplied
-% by x-flipped sigmoidal functions, with a cooperativity coefficient of n.
+function [val,dval,ddval] = biphasicline(x, a, b, x0, y0, l)
+% [val,dval,ddval] = biphasicline(x, a, b, x0, y0, n)
+% Integral wrt x of b/(1+exp((x0-x)/l)) + a/(1+exp((x-x0)/l)), two slopes multiplied
+% by x-flipped sigmoidal functions, with a length scale of adjustment of l.
 % The function switches smoothly between the two slopes as we move along x.
 % y0 is the height of the intersection of the two lines.
 
 % Determine which x's are close enough to x0 to need the exponential form
+n = 1./l;
+
 xdiff = x-x0;
 isa = n.*xdiff < -10;
 isb = n.*xdiff > 10;
